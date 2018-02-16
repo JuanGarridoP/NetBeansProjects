@@ -1,0 +1,156 @@
+;
+;	Printer Installation File
+;
+;	 List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%GP%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+CatalogFile=GP58x64.cat
+DriverVer=08/09/2010,4.0.1.0
+
+;
+; Manufacturer section.
+;
+; This section lists all of the manufacturers
+; that we will display in the Dialog box
+;
+
+[Manufacturer]
+"GP"=GP, NTamd64
+
+;
+; Model Specifications Section
+;
+
+[GP]
+"GP-5830 Series"    = GP5830.GPD
+"GP-5850 Series"    = GP5850.GPD
+"GP-5860 Series"    = GP5860.GPD
+"GP-5890 Series"    = GP5890.GPD
+"GP-5890X Series"   = GP5890X.GPD
+"GP-58120 Series"   = GP58120.GPD
+"GP-58130 Series"   = GP58130.GPD
+"GP-58130M Series"  = GP58130M.GPD
+"GP-H58130 Series"  = GPH58130.GPD
+"GP-58N Series"     = GP58N.GPD
+
+[GP.NTamd64]
+"GP-5830 Series"    = GP5830.GPD
+"GP-5850 Series"    = GP5850.GPD
+"GP-5860 Series"    = GP5860.GPD
+"GP-5890 Series"    = GP5890.GPD
+"GP-5890X Series"   = GP5890X.GPD
+"GP-58120 Series"   = GP58120.GPD
+"GP-58130 Series"   = GP58130.GPD
+"GP-58130M Series"  = GP58130M.GPD
+"GP-H58130 Series"  = GPH58130.GPD
+"GP-58N Series"     = GP58N.GPD
+
+;
+; Installer section(s) referenced above.
+;
+
+[GP5830.GPD]
+CopyFiles=@GP58N.dll,@GP5830.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5830.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP5850.GPD]
+CopyFiles=@GP58N.dll,@GP5850.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5850.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP5860.GPD]
+CopyFiles=@GP58N.dll,@GP5860.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5860.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP5870.GPD]
+CopyFiles=@GP58N.dll,@GP5870.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5870.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP5890.GPD]
+CopyFiles=@GP58N.dll,@GP5890.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5890.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP5890X.GPD]
+CopyFiles=@GP58N.dll,@GP5890X.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP5890X.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP58120.GPD]
+CopyFiles=@GP58N.dll,@GP58120.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP58120.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP58130.GPD]
+CopyFiles=@GP58N.dll,@GP58130.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP58130.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GP58130M.GPD]
+CopyFiles=@GP58N.dll,@GP58130M.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP58130M.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GPH58130.GPD]
+CopyFiles=@GP58N.DLL,@GPH58130.GPD
+DataSection=UNIDRV_DATA
+DataFile=GPH58130.GPD
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[GP58N.GPD]
+CopyFiles=@GP58N.DLL,@GP58N.GPD
+DataSection=UNIDRV_DATA
+DataFile=GP58N.GPD
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+[SourceDisksNames.amd64]
+1 = %disk1%,,,
+
+[SourceDisksFiles]
+GP58N.DLL         = 1
+GP5830.GPD        = 1
+GP5850.GPD        = 1
+GP5860.GPD        = 1
+GP5870.GPD        = 1
+GP5890.GPD        = 1
+GP5890X.GPD       = 1
+GP58120.GPD       = 1
+GP58130.GPD       = 1
+GP58130M.GPD      = 1
+GPH58130.GPD      = 1
+GP58N.GPD         = 1
+
+[Strings]
+PrinterClassName="Printers"
+disk1="SUNCSW Printer Driver Setup Disk"

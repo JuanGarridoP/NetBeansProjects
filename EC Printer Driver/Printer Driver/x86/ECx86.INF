@@ -1,0 +1,116 @@
+;
+;	Printer Installation File
+;
+;	 List of supported printers, manufacturers
+;
+[Version]
+Signature="$Windows NT$"
+Provider=%EC%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+[ClassInstall32.NT]
+AddReg=printer_class_addreg
+
+[printer_class_addreg]
+HKR,,,,%PrinterClassName%
+HKR,,Icon,,"-4"
+HKR,,Installer32,,"ntprint.dll,ClassInstall32"
+HKR,,NoDisplayClass,,1
+HKR,,EnumPropPages32,,"printui.dll,PrinterPropPageProvider"
+
+;
+; Manufacturer section.
+;
+; This section lists all of the manufacturers
+; that we will display in the Dialog box
+;
+
+[Manufacturer]
+"EC"
+
+;
+; Model Specifications Section
+;
+
+[EC]
+"EC-5890X"    = EC5890X.GPD
+"EC-5895X"    = EC5895X.GPD
+"EC-58110"    = EC58110.GPD
+"EC-80250"    = EC80250.GPD
+"EC-80330"    = EC80330.GPD
+"EC-80340"    = EC80340.GPD
+"EC-80350"    = EC80350.GPD
+
+;
+; Installer section(s) referenced above.
+;
+
+[EC5890X.GPD]
+CopyFiles=@EC58.DLL,@EC5890X.GPD
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC5895X.GPD]
+CopyFiles=@EC58.DLL,@EC5895X.GPD
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC58110.GPD]
+CopyFiles=@EC58.DLL,@EC58110.GPD
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC80250.GPD]
+CopyFiles=@ECT80.dll,@EC80250.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC80330.GPD]
+CopyFiles=@ECT80.dll,@EC80330.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC80340.GPD]
+CopyFiles=@ECT80.dll,@EC80340.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+[EC80350.GPD]
+CopyFiles=@ECT80.dll,@EC80350.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=TTFSUB.OEM,UNIDRV.OEM
+
+
+[GOEMUNI]
+GOEMUNI.DLL
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+[SourceDisksNames.x86]
+1 = %disk1%,,,
+
+[SourceDisksFiles]
+EC58.DLL         = 1
+ECT80.DLL        = 1
+GOEMUNI.DLL      = 1
+GOEMUNI.INI      = 1
+EC5890X.GPD      = 1
+EC5895X.GPD      = 1
+EC58110.GPD      = 1
+EC80250.GPD      = 1
+EC80330.GPD      = 1
+EC80340.GPD      = 1
+EC80350.GPD      = 1
+
+[Strings]
+PrinterClassName="Printers"
+disk1="Printer Driver Setup Disk"

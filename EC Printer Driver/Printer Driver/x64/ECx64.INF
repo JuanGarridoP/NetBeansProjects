@@ -1,0 +1,113 @@
+;
+;	Printer Installation File
+;
+;	 List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%EC%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+;
+; Manufacturer section.
+;
+; This section lists all of the manufacturers
+; that we will display in the Dialog box
+;
+
+[Manufacturer]
+"EC"=EC, NTamd64
+
+;
+; Model Specifications Section
+;
+
+[EC]
+"EC-5890X"    = EC5890X.GPD
+"EC-5895X"    = EC5895X.GPD
+"EC-80250"    = EC80250.GPD
+"EC-80330"    = EC80330.GPD
+"EC-80340"    = EC80340.GPD
+"EC-80350"    = EC80350.GPD
+
+[EC.NTamd64]
+"EC-5890X"    = EC5890X.GPD
+"EC-5895X"    = EC5895X.GPD
+"EC-80250"    = EC80250.GPD
+"EC-80330"    = EC80330.GPD
+"EC-80340"    = EC80340.GPD
+"EC-80350"    = EC80350.GPD
+
+;
+; Installer section(s) referenced above.
+;
+
+[EC5890X.GPD]
+CopyFiles=@EC58.dll,@EC5890X.GPD
+DataSection=UNIDRV_DATA
+DataFile=EC5890X.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[EC5895X.GPD]
+CopyFiles=@EC58.dll,@EC5895X.GPD
+DataSection=UNIDRV_DATA
+DataFile=EC5895X.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[EC80250.GPD]
+CopyFiles=@ECT80.dll,@EC80250.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+DataFile=EC80250.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[EC80330.GPD]
+CopyFiles=@ECT80.dll,@EC80330.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+DataFile=EC80330.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[EC80340.GPD]
+CopyFiles=@ECT80.dll,@EC80340.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+DataFile=EC80340.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[EC80350.GPD]
+CopyFiles=@ECT80.dll,@EC80350.GPD,@GOEMUNI.INI,GOEMUNI
+DataSection=UNIDRV_DATA
+DataFile=EC80350.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+
+[GOEMUNI]
+GOEMUNI.DLL
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+[SourceDisksNames.amd64]
+1 = %disk1%,,,
+
+[SourceDisksFiles]
+EC58.DLL         = 1
+ECT80.DLL        = 1
+GOEMUNI.DLL      = 1
+GOEMUNI.INI      = 1
+EC5890X.GPD      = 1
+EC5895X.GPD      = 1
+EC80250.GPD      = 1
+EC80330.GPD      = 1
+EC80340.GPD      = 1
+EC80350.GPD      = 1
+
+
+[Strings]
+PrinterClassName="Printers"
+disk1="Printer Driver Setup Disk"
