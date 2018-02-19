@@ -18,6 +18,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import limo.Formulario;
 
 /**
  *
@@ -136,5 +137,13 @@ public class ventas extends conexionSQL {
 
         }
         return null;
+    }
+    
+    public static void fillForm(){
+        Formulario.clienteText.setText(venta.cliente);
+        Formulario.conductorText.setText(venta.conductor);
+        Formulario.destinoText.setText(venta.destino);
+        Formulario.unidadText.setText(venta.numeroEconomico);
+        Formulario.zonaText.setText(venta.zona);
     }
 }

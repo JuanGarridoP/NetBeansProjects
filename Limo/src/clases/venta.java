@@ -184,6 +184,14 @@ public class venta {
     public void setFechaHora(String fechaHora) {
         this.fechaHora = fechaHora;
     }
+
+    public static String getFolio() {
+        return folio;
+    }
+
+    public static void setFolio(String folio) {
+        venta.folio = folio;
+    }
     
     
     

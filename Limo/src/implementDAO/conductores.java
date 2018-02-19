@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,7 +65,7 @@ public class conductores extends conexionSQL {
 
     }
 
-    public static HashMap<String, String> buscaCodigo(String codigo, String destino,String cliente) {
+    public static HashMap<String, String> buscaCodigo(String codigo, String destino,String cliente,String zona) {
         boolean rcon = true;
         HashMap<String, String> lista = new HashMap<>();
         if (rcon == true) {
@@ -84,6 +85,8 @@ public class conductores extends conexionSQL {
                     venta.modelo=res.getString("modelo");
                     venta.seguroIni=res.getString("seguroIni");
                     venta.seguroFin=res.getString("seguroFin");
+                    venta.zona=zona;
+                    venta.cliente= cliente;
                     lista.put("idConductor", res.getString("idConductor"));
                     lista.put("idUnidad", res.getString("idUnidad"));
                     lista.put("conductor", res.getString("nombre") + " " + res.getString("apellidoP") + " " + res.getString("apellidoM"));
@@ -102,11 +105,9 @@ public class conductores extends conexionSQL {
                 return lista;
             } catch (SQLException e) {
                 Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
-                //return "Verifique su conexión a base de datos";
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Atención", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            //return "Verifique su conexión...";
-        }
+        } 
         return null;
     }
 
