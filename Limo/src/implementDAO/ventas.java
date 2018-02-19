@@ -129,7 +129,6 @@ public class ventas extends conexionSQL {
                 } else {
                     newFolio = "1" + "-" + dateFormat.format(date);
                 }
-                System.err.println(newFolio);
                 return newFolio;
             } catch (SQLException e) {
                 e.printStackTrace();
