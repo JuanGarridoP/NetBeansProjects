@@ -72,26 +72,7 @@ public class ventas extends conexionSQL {
         return "null";
     }
 
-    public static boolean venta(int conductor, int usuario, int unidad, int destino, int foranea) {
-        return false;
-
-        /*String created = fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH);;
-            String sql="INSERT INTO limo.usuarios(Usuario, Correo,Password,idRol,FechaCreacion) VALUES ('"+usuario+"','"+correo+"','"+password+"',"+rol+",'"+created+"')";
-            System.out.println(sql);
-            try{
-               if(ejecutarSQL(sql) != true){
-                   return false;
-               }
-               else{
-                System.out.println("Inserto");
-                return true;
-               }
-            }
-            catch(Exception e){
-                e.printStackTrace();
-                return false;
-            }*/
-    }
+    
 
     public void cleanVentas() {
         venta.idConductor = "";
@@ -106,6 +87,21 @@ public class ventas extends conexionSQL {
         venta.placas = "";
         venta.modelo = "";
         venta.seguroFin = "";
+    }
+    
+    public static boolean ventaInsert(int idConductor, int idUsuario, int idUnidad, int idZona, int idForanea, String folio, String fecha) {
+        String sql = "INSERT INTO limo.conductores(idConductor, idUsuario,idUnidad,idZona,idForanea,folio,fechaHora) VALUES ('" + idConductor + "','" + idUsuario + "','" + idUnidad + "','" + idZona + "','" + idForanea + "','" + folio + "','" + fecha+ "')";
+        System.out.println(sql);
+        try {
+            if (ejecutarSQL(sql) == true) {
+                return true;
+            } 
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     public static String buscaFolio() {

@@ -5,7 +5,6 @@
  */
 package limo;
 
-
 import javax.swing.UIManager;
 import implementDAO.users;
 
@@ -18,15 +17,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    public  Login() {
+    public Login() {
         initComponents();
-        try{
+        try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     /**
@@ -137,21 +135,22 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String usuario=UsuarioT.getText();
-        String pass=PasswordT.getText();
-        if (usuario.equals("") || pass.equals("")){
-                AvisoL.setText("No puede dejar los campos vacios");
+        String usuario = UsuarioT.getText();
+        String pass = PasswordT.getText();
+        int respuesta = 0;
+
+        if (usuario.equals("") || pass.equals("")) {
+            AvisoL.setText("No puede dejar los campos vacios");
+        } else {
+            respuesta = users.autenticar(usuario, pass);
+            if (respuesta != 0) {
+                dispose();
+            } else {
+                AvisoL.setText("Verifica tus credenciales");
+            }
         }
-        else{
-                String respuesta=users.autenticar(usuario, pass);
-                AvisoL.setText(respuesta);
-                if(respuesta.equals("Autenticado")){
-                    dispose();
-                }
-        }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void UsuarioTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioTActionPerformed
@@ -159,7 +158,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioTActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-           // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
 
     /**
@@ -193,7 +192,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+
                 new Login().setVisible(true);
             }
         });

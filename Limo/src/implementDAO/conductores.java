@@ -65,28 +65,31 @@ public class conductores extends conexionSQL {
 
     }
 
-    public static HashMap<String, String> buscaCodigo(String codigo, String destino,String cliente,String zona) {
+    public static HashMap<String, String> buscaCodigo(String codigo, String destino, String cliente, String zona) {
         boolean rcon = true;
         HashMap<String, String> lista = new HashMap<>();
         if (rcon == true) {
             try {
-                res = ejecutarSQLselect("select conductores.*,unidades.numero,unidades.placas,unidades.modelo,unidades.seguroIni,unidades.seguroFin from limo.conductores INNER JOIN unidades where codigo='" + codigo + "'");
+                res = ejecutarSQLselect("select conductores.*,unidades.numero,unidades.placas,unidades.modelo,unidades.seguroIni,unidades.seguroFin from limo.conductores LEFT JOIN unidades ON conductores.idUnidad = unidades.idUnidad where codigo=" + codigo + "");
                 while (res.next()) {
+                    System.out.println(codigo);
+                    venta venta = new venta();
                     venta.idConductor = res.getString("idConductor");
                     venta.idUnidad = res.getString("idUnidad");
                     venta.conductor = res.getString("nombre") + " " + res.getString("apellidoP") + " " + res.getString("apellidoM");
                     venta.fechaNac = res.getString("fechaNac");
                     venta.direccion = res.getString("direccion");
-                    venta.codigoBarras=res.getString("codigo");
-                    venta.telefono=res.getString("telefono");
-                    venta.permiso=res.getString("permiso");
-                    venta.numeroEconomico=res.getString("numero");
-                    venta.placas=res.getString("placas");
-                    venta.modelo=res.getString("modelo");
-                    venta.seguroIni=res.getString("seguroIni");
-                    venta.seguroFin=res.getString("seguroFin");
-                    venta.zona=zona;
-                    venta.cliente= cliente;
+                    venta.codigoBarras = res.getString("codigo");
+                    venta.telefono = res.getString("telefono");
+                    venta.permiso = res.getString("permiso");
+                    venta.numeroEconomico = res.getString("numero");
+                    venta.placas = res.getString("placas");
+                    venta.modelo = res.getString("modelo");
+                    venta.seguroIni = res.getString("seguroIni");
+                    venta.seguroFin = res.getString("seguroFin");
+                    venta.zona = zona;
+                    venta.cliente = cliente;
+                    venta.destino = destino;
                     lista.put("idConductor", res.getString("idConductor"));
                     lista.put("idUnidad", res.getString("idUnidad"));
                     lista.put("conductor", res.getString("nombre") + " " + res.getString("apellidoP") + " " + res.getString("apellidoM"));
@@ -107,7 +110,7 @@ public class conductores extends conexionSQL {
                 Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Atención", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
         return null;
     }
 

@@ -5,8 +5,7 @@
  */
 package limo;
 
-import br.com.adilson.util.Extenso;
-import br.com.adilson.util.PrinterMatrix;
+
 import funciones.lecturaSerial;
 import implementDAO.conductores;
 import implementDAO.conexionSQL;
@@ -49,8 +48,8 @@ public class Ventas extends javax.swing.JFrame {
 
     public Ventas() {
         initComponents();
-        // lecturaSerial.verificaH.start();
-        //lecturaSerial.bytesH.start();
+         lecturaSerial.verificaH.start();
+        lecturaSerial.bytesH.start();
 
     }
 
@@ -166,7 +165,6 @@ public class Ventas extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel12.setText("TOTAL");
 
-        codigoText.setEditable(false);
         codigoText.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         codigoText.setFocusable(false);
 
@@ -344,6 +342,8 @@ public class Ventas extends javax.swing.JFrame {
         }
         else{
         conductores.buscaCodigo(codigoText.getText(), listaB.getSelectedItem().toString(), clienteText.getText(),zonaText.getText());
+        lecturaSerial.verificaH.stop();
+        lecturaSerial.bytesH.stop();
         Formulario F = new Formulario();
         F.setVisible(true);
         dispose();

@@ -23,7 +23,7 @@ public class conexionSQL {
     private static Connection conexion() throws SQLException{   
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/limo?user=root&password=");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/limo?user=root&password=123456");
             return con;
 
         }catch(ClassNotFoundException | SQLException e){
