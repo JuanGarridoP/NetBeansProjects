@@ -6,6 +6,7 @@
 package limo;
 
 
+import clases.venta;
 import funciones.lecturaSerial;
 import implementDAO.conductores;
 import implementDAO.conexionSQL;
@@ -48,7 +49,9 @@ public class Ventas extends javax.swing.JFrame {
 
     public Ventas() {
         initComponents();
-         lecturaSerial.verificaH.start();
+        buscador.setEnabled(false);
+        venta.ventana=1;
+        lecturaSerial.verificaH.start();
         lecturaSerial.bytesH.start();
 
     }
@@ -79,6 +82,7 @@ public class Ventas extends javax.swing.JFrame {
         totalText = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         codigoText = new javax.swing.JTextField();
+        idLugar = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -181,7 +185,10 @@ public class Ventas extends javax.swing.JFrame {
                         .addComponent(listaB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(zonaText, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(zonaText, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(idLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -190,7 +197,7 @@ public class Ventas extends javax.swing.JFrame {
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(totalText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 36, Short.MAX_VALUE))
+                        .addGap(0, 152, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -208,7 +215,7 @@ public class Ventas extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(46, 46, 46)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(355, Short.MAX_VALUE)))
+                    .addContainerGap(471, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +229,9 @@ public class Ventas extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(zonaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(idLugar)
+                    .addComponent(zonaText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -256,7 +265,7 @@ public class Ventas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(315, 315, 315))
+                .addGap(327, 327, 327))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +281,7 @@ public class Ventas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -351,18 +360,21 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void listaBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaBItemStateChanged
-        conexionSQL con = new conexionSQL();
+
         String seleccion = "" + listaB.getSelectedItem(), monto;
         if (seleccion != "null" && listaB.getItemCount() > 0) {
-            monto = ventas.Montos(seleccion);
-            totalText.setText("$" + monto + ".00");
+            ventas.Montos(seleccion);
+            totalText.setText("$" + venta.lista.get(2) + ".00");
         } else {
             totalText.setText("");
         }
     }//GEN-LAST:event_listaBItemStateChanged
 
     private void foraneaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foraneaActionPerformed
+        listaB.removeAllItems();
+        totalText.setText("");
         zonaText.setText("ZF");
+        buscador.setEnabled(true);
     }//GEN-LAST:event_foraneaActionPerformed
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
@@ -371,13 +383,13 @@ public class Ventas extends javax.swing.JFrame {
         listaB.removeAllItems();
         String seleccion = "", keyword;
         if (local.isSelected()) {
-            seleccion = "";
+            venta.seleccion = "zonas";
         }
         if (foranea.isSelected()) {
-            seleccion = "foraneas";
+            venta.seleccion = "foraneas";
         }
         keyword = buscador.getText();
-        lugares = ventas.Buscador(seleccion, keyword);
+        lugares = ventas.Buscador( keyword);
         for (int i = 0; i < lugares.size(); i++) {
             String item = lugares.get(i);
             listaB.addItem(item);
@@ -394,7 +406,10 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_clienteTextKeyTyped
 
     private void localActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localActionPerformed
-        zonaText.setText("ZF");
+        buscador.setEnabled(true);
+        zonaText.setText("");
+        totalText.setText("");
+        listaB.removeAllItems();
     }//GEN-LAST:event_localActionPerformed
 
     /**
@@ -438,6 +453,7 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JTextField clienteText;
     public static javax.swing.JTextField codigoText;
     private javax.swing.JRadioButton foranea;
+    private javax.swing.JTextField idLugar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

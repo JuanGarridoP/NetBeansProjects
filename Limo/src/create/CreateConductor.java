@@ -5,6 +5,8 @@
  */
 package create;
 
+import clases.venta;
+import funciones.lecturaSerial;
 import implementDAO.concesionarios;
 import implementDAO.conductores;
 import java.beans.PropertyVetoException;
@@ -25,6 +27,9 @@ public class CreateConductor extends javax.swing.JInternalFrame {
      */
     public CreateConductor() {
         initComponents();
+        venta.ventana=2;
+        lecturaSerial.verificaH.start();
+        lecturaSerial.bytesH.start();
     }
 
     /**
@@ -50,7 +55,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
         direccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        codigo = new javax.swing.JTextField();
+        codigoText = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         fechaNac = new com.toedter.calendar.JDateChooser();
         permiso = new javax.swing.JTextField();
@@ -102,7 +107,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(concesionario))
                             .addComponent(jLabel8))
@@ -181,7 +186,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -192,11 +197,11 @@ public class CreateConductor extends javax.swing.JInternalFrame {
            boolean exec=false;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(fechaNac.getDate());
-        if(nombre.getText().equals("") ||  apellidoP.getText().equals("") ||  apellidoM.getText().equals("") ||  date.equals("") ||  direccion.getText().equals("") ||  telefono.getText().equals("") ||  codigo.getText().equals("") ||  permiso.getText().equals("")){
+        if(nombre.getText().equals("") ||  apellidoP.getText().equals("") ||  apellidoM.getText().equals("") ||  date.equals("") ||  direccion.getText().equals("") ||  telefono.getText().equals("") ||  codigoText.getText().equals("") ||  permiso.getText().equals("")){
             JOptionPane.showMessageDialog (null, "Completa la información por favor", "Atención!!", JOptionPane.INFORMATION_MESSAGE);
  
         }else{
-            exec= conductores.conInsert(nombre.getText(), apellidoP.getText(), apellidoM.getText(),generoBox.getSelectedItem().toString(),date, direccion.getText(),Integer.parseInt(telefono.getText()),Integer.parseInt(codigo.getText()),concesionario.isSelected(),permiso.getText());
+            exec= conductores.conInsert(nombre.getText(), apellidoP.getText(), apellidoM.getText(),generoBox.getSelectedItem().toString(),date, direccion.getText(),Integer.parseInt(telefono.getText()),Integer.parseInt(codigoText.getText()),concesionario.isSelected(),permiso.getText());
             if(exec !=true){
                 JOptionPane.showMessageDialog (null, "Parece que ha sucedido un problema", "Atención!!", JOptionPane.ERROR_MESSAGE);
             }
@@ -215,7 +220,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidoM;
     private javax.swing.JTextField apellidoP;
-    private javax.swing.JTextField codigo;
+    public static javax.swing.JTextField codigoText;
     private javax.swing.JCheckBox concesionario;
     private javax.swing.JTextField direccion;
     private com.toedter.calendar.JDateChooser fechaNac;

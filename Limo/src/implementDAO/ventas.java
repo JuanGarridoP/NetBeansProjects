@@ -5,6 +5,7 @@
  */
 package implementDAO;
 
+import clases.usuario;
 import clases.venta;
 import static implementDAO.conexionSQL.ejecutarSQL;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import limo.Formulario;
@@ -28,15 +30,14 @@ public class ventas extends conexionSQL {
 
     private static ResultSet res;
 
-    public static ArrayList<String> Buscador(String tabla, String cadena) {
+    public static ArrayList<String> Buscador( String cadena) {
         boolean rcon = true;
         ArrayList<String> lista = new ArrayList<>();
-        if (rcon == true) {
             try {
 
                 int cont = 0;
 
-                res = ejecutarSQLselect("select * from limo." + tabla + " where Lugar LIKE '%" + cadena + "%'");
+                res = ejecutarSQLselect("select * from limo." + venta.seleccion + " where Lugar LIKE '%" + cadena + "%'");
                 while (res.next()) {
                     lista.add(res.getString("Lugar"));
                 }
@@ -47,30 +48,37 @@ public class ventas extends conexionSQL {
                 Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
                 //return "Verifique su conexión a base de datos";
             }
-        } else {
-            //return "Verifique su conexión...";
-        }
+        
         return null;
     }
 
-    public static String Montos(String lugar) {
-        boolean rcon = true;
-        if (rcon == true) {
+    public static void Montos(String lugar) {
+
             try {
-                res = ejecutarSQLselect("select * from limo.foraneas where Lugar='" + lugar + "'");
+                res = ejecutarSQLselect("select * from limo."+venta.seleccion+" where Lugar='" + lugar + "'");
+                venta.lista = new ArrayList<>();
                 while (res.next()) {
-                    return res.getString("Monto");
+                    if(venta.seleccion.equals("zonas")){
+                        venta.lista.add(res.getString("idZona"));
+                        venta.lista.add(res.getString("lugar"));
+                        venta.lista.add(res.getString("monto"));
+                        venta.lista.add(res.getString("zona"));
+                    }
+                    else{
+                        venta.lista.add(res.getString("idForanea"));
+                        venta.lista.add(res.getString("lugar"));
+                        venta.lista.add(res.getString("monto"));
+                        venta.lista.add("ZF");
+                    }
+                    
+              
                 }
 
             } catch (SQLException e) {
-                Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
-                return "Verifique su conexión a base de datos";
+                
             }
-        } else {
-            return "Verifique su conexión...";
-        }
-        return "null";
-    }
+        } 
+
 
     
 
@@ -138,8 +146,16 @@ public class ventas extends conexionSQL {
     public static void fillForm(){
         Formulario.clienteText.setText(venta.cliente);
         Formulario.conductorText.setText(venta.conductor);
-        Formulario.destinoText.setText(venta.destino);
+        Formulario.destinoText.setText(venta.lista.get(1));
         Formulario.unidadText.setText(venta.numeroEconomico);
-        Formulario.zonaText.setText(venta.zona);
+        Formulario.zonaText.setText(venta.lista.get(3));
+        if(venta.seleccion.equals("zonas")){
+            Formulario.idZonaText.setText(venta.lista.get(0));
+        }
+        else{
+            Formulario.idForaneaText.setText(venta.lista.get(0));
+        }
+        Formulario.idUsuarioText.setText(String.valueOf(usuario.idRol));
+        
     }
 }

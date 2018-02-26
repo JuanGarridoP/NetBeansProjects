@@ -1,6 +1,9 @@
 package funciones;
 
+import clases.venta;
 import com.fazecast.jSerialComm.*;
+import create.CreateConductor;
+import delete.DeleteConductor;
 import java.awt.List;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import limo.Ventas;
+import update.UpdateConductor;
 
 public class lecturaSerial {
 
@@ -85,7 +89,18 @@ public class lecturaSerial {
                             serial.mensaje= serial.mensaje + String.valueOf(serial.bytesM);
                             }
                         }
-                        Ventas.codigoText.setText(serial.mensaje);
+                        if(venta.ventana == 1){
+                        Ventas.codigoText.setText(serial.mensaje); //ventana venta
+                        }
+                        else if(venta.ventana == 2){
+                         CreateConductor.codigoText.setText(serial.mensaje);   //ventana crea conductor
+                        }
+                        else if(venta.ventana == 3){
+                         DeleteConductor.codigoText.setText(serial.mensaje);   //ventana crea conductor
+                        }
+                        else if(venta.ventana == 4){
+                         UpdateConductor.codigoText.setText(serial.mensaje);   //ventana crea conductor
+                        }
                         serial.mensaje="";
                         in.close();
                     }

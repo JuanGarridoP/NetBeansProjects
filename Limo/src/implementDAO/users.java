@@ -65,13 +65,12 @@ public class users extends conexionSQL {
             res = ejecutarSQLselect("select * from limo.usuarios where Usuario='" + user + "'");
             while (res.next()) {
                 if (pass.equals(res.getString("Password"))) {
-                    Menu m = new Menu();
-                    m.setVisible(true);
                     usuario usuario = new usuario();
                     usuario.idRol = Integer.parseInt(res.getString("idRol"));
                     usuario.idUsuario = Integer.parseInt(res.getString("IdUsuario"));
                     usuario.nick = res.getString("Usuario");
-
+                    Menu m = new Menu();
+                    m.setVisible(true);
                     return Integer.parseInt(res.getString("idUsuario"));
                 } else {
                     return 0;

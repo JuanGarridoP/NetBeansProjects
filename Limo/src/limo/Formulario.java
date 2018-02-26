@@ -281,10 +281,10 @@ public class Formulario extends javax.swing.JFrame {
     public static javax.swing.JTextField destinoText;
     public static javax.swing.JTextField folioText;
     private javax.swing.JTextField idConductorText;
-    private javax.swing.JTextField idForaneaText;
+    public static javax.swing.JTextField idForaneaText;
     private javax.swing.JTextField idUnidadText;
-    private javax.swing.JTextField idUsuarioText;
-    private javax.swing.JTextField idZonaText;
+    public static javax.swing.JTextField idUsuarioText;
+    public static javax.swing.JTextField idZonaText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

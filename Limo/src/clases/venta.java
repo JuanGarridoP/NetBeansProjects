@@ -5,6 +5,8 @@
  */
 package clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Juan_Garrido
@@ -30,6 +32,44 @@ public class venta {
     public static String destino;
     public static String cliente;
     public static String folio;
+    public static String seleccion;
+    public static String comboBoxsel;
+    public static ArrayList<String> lista;
+    public static int ventana;
+
+    public static int getVentana() {
+        return ventana;
+    }
+
+    public static void setVentana(int ventana) {
+        venta.ventana = ventana;
+    }
+
+    public static ArrayList<String> getLista() {
+        return lista;
+    }
+
+    public static void setLista(ArrayList<String> lista) {
+        venta.lista = lista;
+    }
+    
+
+    public static String getSeleccion() {
+        return seleccion;
+    }
+
+    public static void setSeleccion(String seleccion) {
+        venta.seleccion = seleccion;
+    }
+
+    public static String getComboBoxsel() {
+        return comboBoxsel;
+    }
+
+    public static void setComboBoxsel(String comboBoxsel) {
+        venta.comboBoxsel = comboBoxsel;
+    }
+    
 
     public static String getIdUnidad() {
         return idUnidad;
