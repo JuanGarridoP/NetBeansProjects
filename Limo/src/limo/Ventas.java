@@ -5,7 +5,6 @@
  */
 package limo;
 
-
 import clases.venta;
 import funciones.lecturaSerial;
 import implementDAO.conductores;
@@ -50,7 +49,7 @@ public class Ventas extends javax.swing.JFrame {
     public Ventas() {
         initComponents();
         buscador.setEnabled(false);
-        venta.ventana=1;
+        venta.ventana = 1;
         lecturaSerial.verificaH.start();
         lecturaSerial.bytesH.start();
 
@@ -340,22 +339,19 @@ public class Ventas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaB.getSelectedItem() == null || listaB.getSelectedItem().toString().equals("")){
+        if (listaB.getSelectedItem() == null || listaB.getSelectedItem().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar un lugar", "Atención", JOptionPane.WARNING_MESSAGE);
-        }
-        else if(clienteText.getText().equals("")){
+        } else if (clienteText.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese nombre del cliente", "Atención", JOptionPane.WARNING_MESSAGE);
-        }
-        else if(codigoText.getText().equals("")){
+        } else if (codigoText.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Escanear código de barras", "Atención", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-        conductores.buscaCodigo(codigoText.getText(), listaB.getSelectedItem().toString(), clienteText.getText(),zonaText.getText());
-        lecturaSerial.verificaH.stop();
-        lecturaSerial.bytesH.stop();
-        Formulario F = new Formulario();
-        F.setVisible(true);
-        dispose();
+        } else {
+            conductores.buscaCodigo(codigoText.getText(), listaB.getSelectedItem().toString(), clienteText.getText(), zonaText.getText());
+            lecturaSerial.verificaH.stop();
+            lecturaSerial.bytesH.stop();
+            Formulario F = new Formulario();
+            F.setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -379,7 +375,6 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_foraneaActionPerformed
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
-        conexionSQL con = new conexionSQL();
         ArrayList<String> lugares;
         listaB.removeAllItems();
         String seleccion = "", keyword;
@@ -390,7 +385,7 @@ public class Ventas extends javax.swing.JFrame {
             venta.seleccion = "foraneas";
         }
         keyword = buscador.getText();
-        lugares = ventas.Buscador( keyword);
+        lugares = ventas.Buscador(keyword);
         for (int i = 0; i < lugares.size(); i++) {
             String item = lugares.get(i);
             listaB.addItem(item);

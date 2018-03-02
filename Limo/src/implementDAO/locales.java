@@ -35,11 +35,29 @@ public class locales extends conexionSQL {
     public static ArrayList<String> buscadorLocal(String cadena){
         ArrayList<String> lista = new ArrayList<>();
         try {
-            res = ejecutarSQLselect("select * from limo.zonas where local = "+cadena+"");
+            res = ejecutarSQLselect("select * from limo.zonas where Lugar = "+cadena+"");
             while (res.next()) {
                 lista.add(res.getString("idZona"));
+                lista.add(res.getString("local"));
                 lista.add(res.getString("zona"));
                 lista.add(res.getString("montoLocal"));
+            }
+            res.close();
+            return lista;
+
+        } catch (SQLException e) {
+            Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+        
+    }
+    
+    public static ArrayList<String> filtro(String cadena){
+        ArrayList<String> lista = new ArrayList<>();
+        try {
+            res = ejecutarSQLselect("select * from limo.zonas where local LIKE '%" + cadena + "%'");
+            while (res.next()) {
+                lista.add(res.getString("zona"));
             }
             res.close();
             return lista;

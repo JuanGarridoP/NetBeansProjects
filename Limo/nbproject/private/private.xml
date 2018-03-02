@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/limo/Formulario.java</file>
             <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/implementDAO/ventas.java</file>
-            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/clases/venta.java</file>
-            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/create/CreateConductor.java</file>
+            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/update/UpdateUnidad.java</file>
+            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/update/UpdateForanea.java</file>
+            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/implementDAO/foraneas.java</file>
             <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/limo/Administracion.java</file>
-            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/funciones/lecturaSerial.java</file>
-            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/update/UpdateConductor.java</file>
             <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/limo/Ventas.java</file>
+            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/implementDAO/locales.java</file>
+            <file>file:/C:/Users/Juan_Garrido/Documents/NetBeansProjects/Limo/src/update/UpdateLocal.java</file>
         </group>
     </open-files>
 </project-private>

@@ -38,10 +38,28 @@ public class foraneas extends conexionSQL {
     public static ArrayList<String> buscadorForaneo(String cadena){
         ArrayList<String> lista = new ArrayList<>();
         try {
-            res = ejecutarSQLselect("select * from limo.foraneas where Lugar = "+cadena+"");
+            res = ejecutarSQLselect("select * from limo.foraneas where Lugar = '"+cadena+"'");
             while (res.next()) {
                 lista.add(res.getString("idForanea"));
+                lista.add(res.getString("Lugar"));
                 lista.add(res.getString("Monto"));
+            }
+            res.close();
+            return lista;
+
+        } catch (SQLException e) {
+            Logger.getLogger(conexionSQL.class.getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+        
+    }
+    
+    public static ArrayList<String> filtro(String cadena){
+        ArrayList<String> lista = new ArrayList<>();
+        try {
+            res = ejecutarSQLselect("select * from limo.foraneas WHERE Lugar LIKE '%" + cadena + "%'");
+            while (res.next()) {
+                lista.add(res.getString("Lugar"));
             }
             res.close();
             return lista;

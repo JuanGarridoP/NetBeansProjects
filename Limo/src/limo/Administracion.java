@@ -11,7 +11,6 @@ import update.*;
 import view.*;
 import extra.*;
 
-
 /**
  *
  * @author Juan_Garrido
@@ -131,6 +130,11 @@ public class Administracion extends javax.swing.JFrame {
         jMenuBar1.add(Nuevo);
 
         Editar.setText("Editar");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
 
         updateUser.setText("Usuario");
         updateUser.addActionListener(new java.awt.event.ActionListener() {
@@ -299,81 +303,81 @@ public class Administracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
-           CreateUser newUser = new CreateUser(); 
-           desktop.add(newUser);
-           newUser.show();
+        CreateUser newUser = new CreateUser();
+        desktop.add(newUser);
+        newUser.show();
     }//GEN-LAST:event_createUserActionPerformed
 
     private void createConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductorActionPerformed
-           CreateConductor newConductor = new CreateConductor(); 
-           desktop.add(newConductor);
-           newConductor.show();
+        CreateConductor newConductor = new CreateConductor();
+        desktop.add(newConductor);
+        newConductor.show();
     }//GEN-LAST:event_createConductorActionPerformed
 
     private void createConcesionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConcesionarioActionPerformed
-           CreateConcesionario newConcesionario = new CreateConcesionario(); 
-           desktop.add(newConcesionario);
-           newConcesionario.show();
+        CreateConcesionario newConcesionario = new CreateConcesionario();
+        desktop.add(newConcesionario);
+        newConcesionario.show();
     }//GEN-LAST:event_createConcesionarioActionPerformed
 
     private void createUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUnidadActionPerformed
-           CreateUnidad newUnidad = new CreateUnidad(); 
-           desktop.add(newUnidad);
-           newUnidad.show();
+        CreateUnidad newUnidad = new CreateUnidad();
+        desktop.add(newUnidad);
+        newUnidad.show();
     }//GEN-LAST:event_createUnidadActionPerformed
 
     private void updateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserActionPerformed
-           UpdateUser upUser = new UpdateUser(); 
-           desktop.add(upUser);
-           upUser.show();
+        UpdateUser upUser = new UpdateUser();
+        desktop.add(upUser);
+        upUser.show();
     }//GEN-LAST:event_updateUserActionPerformed
 
     private void updateConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateConductorActionPerformed
-           UpdateConductor upConductor = new UpdateConductor(); 
-           desktop.add(upConductor);
-           upConductor.show();
+        UpdateConductor upConductor = new UpdateConductor();
+        desktop.add(upConductor);
+        upConductor.show();
     }//GEN-LAST:event_updateConductorActionPerformed
 
     private void updateConsecionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateConsecionarioActionPerformed
-           UpdateConcesionario upConcesionario = new UpdateConcesionario(); 
-           desktop.add(upConcesionario);
-           upConcesionario.show();
+        UpdateConcesionario upConcesionario = new UpdateConcesionario();
+        desktop.add(upConcesionario);
+        upConcesionario.show();
     }//GEN-LAST:event_updateConsecionarioActionPerformed
 
     private void updateUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUnidadActionPerformed
-           UpdateUnidad upUnidad = new UpdateUnidad(); 
-           desktop.add(upUnidad);
-           upUnidad.show();
+        UpdateUnidad upUnidad = new UpdateUnidad();
+        desktop.add(upUnidad);
+        upUnidad.show();
     }//GEN-LAST:event_updateUnidadActionPerformed
 
     private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
-           DeleteUser delUser = new DeleteUser(); 
-           desktop.add(delUser);
-           delUser.show();
+        DeleteUser delUser = new DeleteUser();
+        desktop.add(delUser);
+        delUser.show();
     }//GEN-LAST:event_deleteUserActionPerformed
 
     private void deleteConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteConductorActionPerformed
-           DeleteConductor delConductor = new DeleteConductor(); 
-           desktop.add(delConductor);
-           delConductor.show();
+        DeleteConductor delConductor = new DeleteConductor();
+        desktop.add(delConductor);
+        delConductor.show();
     }//GEN-LAST:event_deleteConductorActionPerformed
 
     private void deleteConsecionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteConsecionarioActionPerformed
-           DeleteConcesionario delConcesionario = new DeleteConcesionario(); 
-           desktop.add(delConcesionario);
-           delConcesionario.show();
+        DeleteConcesionario delConcesionario = new DeleteConcesionario();
+        desktop.add(delConcesionario);
+        delConcesionario.show();
     }//GEN-LAST:event_deleteConsecionarioActionPerformed
 
     private void deleteUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUnidadActionPerformed
-           DeleteUnidad delUnidad = new DeleteUnidad(); 
-           desktop.add(delUnidad);
-           delUnidad.show();
+        DeleteUnidad delUnidad = new DeleteUnidad();
+        desktop.add(delUnidad);
+        delUnidad.show();
     }//GEN-LAST:event_deleteUnidadActionPerformed
 
     private void viewUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsersActionPerformed
-       viewUsers viewUser = new viewUsers(); 
-           desktop.add(viewUser);
-           viewUser.show();
+        viewUsers viewUser = new viewUsers();
+        desktop.add(viewUser);
+        viewUser.show();
     }//GEN-LAST:event_viewUsersActionPerformed
 
     private void deleteConductor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteConductor1ActionPerformed
@@ -381,9 +385,9 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteConductor1ActionPerformed
 
     private void deleteConsecionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteConsecionario1ActionPerformed
-        viewConcesionarios viewCon = new viewConcesionarios(); 
-           desktop.add(viewCon);
-           viewCon.show();
+        viewConcesionarios viewCon = new viewConcesionarios();
+        desktop.add(viewCon);
+        viewCon.show();
     }//GEN-LAST:event_deleteConsecionario1ActionPerformed
 
     private void deleteUnidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUnidad1ActionPerformed
@@ -391,29 +395,35 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteUnidad1ActionPerformed
 
     private void viewUsers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsers1ActionPerformed
-       CodigoBarras viewCodigo = new CodigoBarras(); 
-           desktop.add(viewCodigo);
-           viewCodigo.show();
+        CodigoBarras viewCodigo = new CodigoBarras();
+        desktop.add(viewCodigo);
+        viewCodigo.show();
     }//GEN-LAST:event_viewUsers1ActionPerformed
 
     private void createConductor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor1ActionPerformed
-      CreateLocal local = new CreateLocal();
-      desktop.add(local);
-      local.show();
+        CreateLocal local = new CreateLocal();
+        desktop.add(local);
+        local.show();
     }//GEN-LAST:event_createConductor1ActionPerformed
 
     private void createConductor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor2ActionPerformed
-       CreateForanea foranea = new CreateForanea();
-       desktop.add(foranea);
-       foranea.show();
+        CreateForanea foranea = new CreateForanea();
+        desktop.add(foranea);
+        foranea.show();
     }//GEN-LAST:event_createConductor2ActionPerformed
 
     private void createConductor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor3ActionPerformed
-        // TODO add your handling code here:
+        UpdateForanea foranea = new UpdateForanea();
+        desktop.add(foranea);
+        foranea.show();
+
+
     }//GEN-LAST:event_createConductor3ActionPerformed
 
     private void createConductor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor4ActionPerformed
-        // TODO add your handling code here:
+        UpdateLocal local = new UpdateLocal();
+        desktop.add(local);
+        local.show();
     }//GEN-LAST:event_createConductor4ActionPerformed
 
     private void createConductor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor5ActionPerformed
@@ -423,6 +433,10 @@ public class Administracion extends javax.swing.JFrame {
     private void createConductor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createConductor6ActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+
+    }//GEN-LAST:event_EditarActionPerformed
 
     /**
      * @param args the command line arguments
