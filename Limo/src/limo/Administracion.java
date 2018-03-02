@@ -41,16 +41,22 @@ public class Administracion extends javax.swing.JFrame {
         createConductor = new javax.swing.JMenuItem();
         createConcesionario = new javax.swing.JMenuItem();
         createUnidad = new javax.swing.JMenuItem();
+        createConductor1 = new javax.swing.JMenuItem();
+        createConductor2 = new javax.swing.JMenuItem();
         Editar = new javax.swing.JMenu();
         updateUser = new javax.swing.JMenuItem();
         updateConductor = new javax.swing.JMenuItem();
         updateConsecionario = new javax.swing.JMenuItem();
         updateUnidad = new javax.swing.JMenuItem();
+        createConductor3 = new javax.swing.JMenuItem();
+        createConductor4 = new javax.swing.JMenuItem();
         Borrar = new javax.swing.JMenu();
         deleteUser = new javax.swing.JMenuItem();
         deleteConductor = new javax.swing.JMenuItem();
         deleteConsecionario = new javax.swing.JMenuItem();
         deleteUnidad = new javax.swing.JMenuItem();
+        createConductor5 = new javax.swing.JMenuItem();
+        createConductor6 = new javax.swing.JMenuItem();
         Borrar1 = new javax.swing.JMenu();
         viewUsers = new javax.swing.JMenuItem();
         deleteConductor1 = new javax.swing.JMenuItem();
@@ -106,6 +112,22 @@ public class Administracion extends javax.swing.JFrame {
         });
         Nuevo.add(createUnidad);
 
+        createConductor1.setText("Local");
+        createConductor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor1ActionPerformed(evt);
+            }
+        });
+        Nuevo.add(createConductor1);
+
+        createConductor2.setText("Foranea");
+        createConductor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor2ActionPerformed(evt);
+            }
+        });
+        Nuevo.add(createConductor2);
+
         jMenuBar1.add(Nuevo);
 
         Editar.setText("Editar");
@@ -142,6 +164,22 @@ public class Administracion extends javax.swing.JFrame {
         });
         Editar.add(updateUnidad);
 
+        createConductor3.setText("Foranea");
+        createConductor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor3ActionPerformed(evt);
+            }
+        });
+        Editar.add(createConductor3);
+
+        createConductor4.setText("Local");
+        createConductor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor4ActionPerformed(evt);
+            }
+        });
+        Editar.add(createConductor4);
+
         jMenuBar1.add(Editar);
 
         Borrar.setText("Borrar");
@@ -177,6 +215,22 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
         Borrar.add(deleteUnidad);
+
+        createConductor5.setText("Foranea");
+        createConductor5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor5ActionPerformed(evt);
+            }
+        });
+        Borrar.add(createConductor5);
+
+        createConductor6.setText("Local");
+        createConductor6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createConductor6ActionPerformed(evt);
+            }
+        });
+        Borrar.add(createConductor6);
 
         jMenuBar1.add(Borrar);
 
@@ -342,6 +396,34 @@ public class Administracion extends javax.swing.JFrame {
            viewCodigo.show();
     }//GEN-LAST:event_viewUsers1ActionPerformed
 
+    private void createConductor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor1ActionPerformed
+      CreateLocal local = new CreateLocal();
+      desktop.add(local);
+      local.show();
+    }//GEN-LAST:event_createConductor1ActionPerformed
+
+    private void createConductor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor2ActionPerformed
+       CreateForanea foranea = new CreateForanea();
+       desktop.add(foranea);
+       foranea.show();
+    }//GEN-LAST:event_createConductor2ActionPerformed
+
+    private void createConductor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createConductor3ActionPerformed
+
+    private void createConductor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createConductor4ActionPerformed
+
+    private void createConductor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createConductor5ActionPerformed
+
+    private void createConductor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createConductor6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createConductor6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -385,6 +467,12 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JMenu Nuevo;
     private javax.swing.JMenuItem createConcesionario;
     private javax.swing.JMenuItem createConductor;
+    private javax.swing.JMenuItem createConductor1;
+    private javax.swing.JMenuItem createConductor2;
+    private javax.swing.JMenuItem createConductor3;
+    private javax.swing.JMenuItem createConductor4;
+    private javax.swing.JMenuItem createConductor5;
+    private javax.swing.JMenuItem createConductor6;
     private javax.swing.JMenuItem createUnidad;
     private javax.swing.JMenuItem createUser;
     private javax.swing.JMenuItem deleteConductor;

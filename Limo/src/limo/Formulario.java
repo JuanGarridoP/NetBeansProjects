@@ -219,18 +219,34 @@ public class Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/DD HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
-        int idConductor = Integer.parseInt(idConductorText.getText()); 
+        int idZona, idForanea;
+        int idConductor = Integer.parseInt(idConductorText.getText());
         int idUsuario = Integer.parseInt(idUsuarioText.getText());
         int idUnidad = Integer.parseInt(idUnidadText.getText());
-        int idZona =Integer.parseInt(idZonaText.getText());
-        int idForanea = Integer.parseInt(idForaneaText.getText());
-        String folio=folioText.getText();
+        if (!idZonaText.getText().equals("")) {
+            idZona = Integer.parseInt(idZonaText.getText());
+        } else {
+            idZona = 0;
+        }
+        if (!idForaneaText.getText().equals("")) {
+            idForanea = Integer.parseInt(idForaneaText.getText());
+        } else {
+            idForanea = 0;
+        }
+        String folio = folioText.getText();
         String fecha = dateFormat.format(date);
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea continuar?, Se registrará la venta y se imprimirá Ticket", "Atención!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (resp == 0) {
-            ventas.ventaInsert(idConductor, idUsuario, idUnidad, idZona, idForanea, folio, fecha);
+            if (ventas.ventaInsert(idConductor, idUsuario, idUnidad, idZona, idForanea, folio, fecha)) {
+                JOptionPane.showConfirmDialog(null, "Se ha registrado su venta", "Atención!", JOptionPane.PLAIN_MESSAGE);
+                //aqui va impresion
+                this.dispose();
+            } else {
+                JOptionPane.showConfirmDialog(null, "Error no se registró la venta!!", "Atención!", JOptionPane.ERROR_MESSAGE);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -280,9 +296,9 @@ public class Formulario extends javax.swing.JFrame {
     public static javax.swing.JTextField conductorText;
     public static javax.swing.JTextField destinoText;
     public static javax.swing.JTextField folioText;
-    private javax.swing.JTextField idConductorText;
+    public static javax.swing.JTextField idConductorText;
     public static javax.swing.JTextField idForaneaText;
-    private javax.swing.JTextField idUnidadText;
+    public static javax.swing.JTextField idUnidadText;
     public static javax.swing.JTextField idUsuarioText;
     public static javax.swing.JTextField idZonaText;
     private javax.swing.JButton jButton1;

@@ -365,6 +365,7 @@ public class Ventas extends javax.swing.JFrame {
         if (seleccion != "null" && listaB.getItemCount() > 0) {
             ventas.Montos(seleccion);
             totalText.setText("$" + venta.lista.get(2) + ".00");
+            idLugar.setText(venta.lista.get(0));
         } else {
             totalText.setText("");
         }

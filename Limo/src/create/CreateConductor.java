@@ -27,9 +27,14 @@ public class CreateConductor extends javax.swing.JInternalFrame {
      */
     public CreateConductor() {
         initComponents();
-        venta.ventana=2;
-        lecturaSerial.verificaH.start();
-        lecturaSerial.bytesH.start();
+        venta.ventana = 2;
+        if (lecturaSerial.verificaH.isAlive()) {
+            lecturaSerial.verificaH.notify();
+            lecturaSerial.bytesH.notify();
+        } else {
+            lecturaSerial.verificaH.start();
+            lecturaSerial.bytesH.start();
+        }
     }
 
     /**
@@ -61,6 +66,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
         permiso = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         concesionario = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,6 +103,13 @@ public class CreateConductor extends javax.swing.JInternalFrame {
 
         concesionario.setText("Concesionario");
 
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,9 +124,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
                                 .addGap(27, 27, 27)
                                 .addComponent(concesionario))
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(33, 33, 33))
+                        .addGap(33, 121, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -143,6 +154,12 @@ public class CreateConductor extends javax.swing.JInternalFrame {
                             .addComponent(permiso, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,33 +197,34 @@ public class CreateConductor extends javax.swing.JInternalFrame {
                         .addComponent(permiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(concesionario))
+                    .addComponent(concesionario)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           boolean exec=false;
+        boolean exec = false;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(fechaNac.getDate());
-        if(nombre.getText().equals("") ||  apellidoP.getText().equals("") ||  apellidoM.getText().equals("") ||  date.equals("") ||  direccion.getText().equals("") ||  telefono.getText().equals("") ||  codigoText.getText().equals("") ||  permiso.getText().equals("")){
-            JOptionPane.showMessageDialog (null, "Completa la información por favor", "Atención!!", JOptionPane.INFORMATION_MESSAGE);
- 
-        }else{
-            exec= conductores.conInsert(nombre.getText(), apellidoP.getText(), apellidoM.getText(),generoBox.getSelectedItem().toString(),date, direccion.getText(),Integer.parseInt(telefono.getText()),Integer.parseInt(codigoText.getText()),concesionario.isSelected(),permiso.getText());
-            if(exec !=true){
-                JOptionPane.showMessageDialog (null, "Parece que ha sucedido un problema", "Atención!!", JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-                JOptionPane.showMessageDialog (null, "Se ha agregado correctamente!", "", JOptionPane.INFORMATION_MESSAGE);
+        if (nombre.getText().equals("") || apellidoP.getText().equals("") || apellidoM.getText().equals("") || date.equals("") || direccion.getText().equals("") || telefono.getText().equals("") || codigoText.getText().equals("") || permiso.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Completa la información por favor", "Atención!!", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            exec = conductores.conInsert(nombre.getText(), apellidoP.getText(), apellidoM.getText(), generoBox.getSelectedItem().toString(), date, direccion.getText(), Integer.parseInt(telefono.getText()), Integer.parseInt(codigoText.getText()), concesionario.isSelected(), permiso.getText());
+            if (exec != true) {
+                JOptionPane.showMessageDialog(null, "Parece que ha sucedido un problema", "Atención!!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Se ha agregado correctamente!", "", JOptionPane.INFORMATION_MESSAGE);
                 try {
                     this.setClosed(true);
                 } catch (PropertyVetoException ex) {
@@ -215,6 +233,14 @@ public class CreateConductor extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        lecturaSerial.verificaH.interrupt();
+        lecturaSerial.bytesH.interrupt();
+
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -226,6 +252,7 @@ public class CreateConductor extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser fechaNac;
     private javax.swing.JComboBox<String> generoBox;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

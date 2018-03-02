@@ -50,7 +50,7 @@ public class lecturaSerial {
                     }
 
                     try {
-                        Thread.sleep(100000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(lecturaSerial.class.getName()).log(Level.SEVERE, null, ex);
                     }
